@@ -77,8 +77,25 @@ resource "aws_security_group" "ai-cp2-07-sg"{
         cidr_blocks = ["0.0.0.0/0"]
     }
 }
-# 4. ec2 생성을 위한 이미지(OS 구동) 정보 조회
+# 4. ec2 생성을 위한 이미지(ami: Amazon machine image) (OS 구동환경) 정보 조회
+data "aws_ami" "amazon_linux_" {
+    # 최신 설정
+    most_recent = true
+    # 소유자 지정
+    owners = ["amazon"]
+    # 필터링
+    filter{
+        name = "name"
+        values = ["al2003-ami-*"]
 
+    }
+    # 필터추가
+    filter {
+        name = "architecture"
+        values = ["x86_64"]
+    }
+    # 필터를 추가할수록 원하는 것을 뽑을 수 있을 가능성이 높아진다.
+}
 # 5. EC2 생성 선언
 
 # 6. 탄력적 IP 적용 (1차 버전에서는  제외)
