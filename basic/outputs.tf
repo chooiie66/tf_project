@@ -11,3 +11,9 @@ output "default_susbnets_ids" {
     description = "서울 리전의 기본 vpc에 속한 서브넷들의 id 리스트"
     value = data.aws_subnets.default.ids
 }
+
+# 3. AMI 아이디 출력
+output "aws_ami_amazon_linux_id" {
+    description = "아마존 리눅스의 ami id"
+    value = data.aws_ami.amazon_linux_.id
+}
