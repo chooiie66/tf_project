@@ -10,9 +10,9 @@
 - *.tfvars : terraform의 환경변수 -> 외부에서 세팅하는 기본 값.
 ```
 /basic
-L provider.tf
+L provider.tf            : 버전, 공급자정보 기술.
 L terraform.tfvars
-L variables.tf
+L variables.tf          : 테라폼 변수
 L main.tf
 L outputs.tf
 L .gitignore
