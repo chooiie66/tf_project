@@ -64,9 +64,17 @@ resource "aws_security_group" "ai-cp2-07-sg"{
         # 전세계에서 웹으로 접속 가능.
         description="HTTP"
     }
-    # 아웃바운드 규칙 ###############
-    egress{
 
+    # 아웃바운드 규칙 ###############
+    #내부 트래픽이 외부로 나가는 규칙
+    egress{
+        # 모든 프로토콜 개방
+        protocol = "-1"
+        # 모든 포트 개방
+        from_port = 0
+        to_port = 0
+        # IP 전세계로 개방
+        cidr_blocks = ["0.0.0.0/0"]
     }
 }
 # 4. ec2 생성을 위한 이미지(OS 구동) 정보 조회
