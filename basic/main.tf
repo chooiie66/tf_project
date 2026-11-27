@@ -20,8 +20,7 @@ data "aws_subnets" "default" {
         values = [data.aws_vpc.default.id]
     }
 }
- 
-# 3. 보안 그룹 생성 선언
+# 3. 보안 그룹 생성 선언        선언 = resource
 resource "aws_security_group" "ai-cp2-07-sg"{
     # 기본 세부 정보 #############
     # 이름 
@@ -77,8 +76,8 @@ resource "aws_security_group" "ai-cp2-07-sg"{
         cidr_blocks = ["0.0.0.0/0"]
     }
 }
-# 4. ec2 생성을 위한 이미지(ami: Amazon machine image) (OS 구동환경) 정보 조회
-data "aws_ami" "amazon_linux_" {
+# 4. ec2 생성을 위한 이미지(ami: Amazon machine image) (OS 구동환경) 정보 조회 조회 = data
+data "aws_ami" "amazon_linux" {
     # 최신 설정
     most_recent = true
     # 소유자 지정
@@ -97,5 +96,25 @@ data "aws_ami" "amazon_linux_" {
     # 필터를 추가할수록 원하는 것을 뽑을 수 있을 가능성이 높아진다.
 }
 # 5. EC2 생성 선언
+resource "aws_instance" "ai-cp2-07-ec2"{
+    # 태그
+    tags = {
+        Name = "ai-cp2-07-ec2"
+    }
+    # AMI 
+    ami = data.aws_ami.amazon_linux.id
+    # 인스턴스 유형
+    instance_type = var.instance_type
+    # 키페어
+    key_name = var.key_name
+    # 서브넷
+    subnet_id = data.aws_subnets.default.ids[0] #a동,b동,c동,d동 중 a동 선택.
+    # 보안그룹
+    vpc_security_group_ids = [aws_security_group.ai-cp2-07-sg.id]
+    # 스토리지 생략
+    # 고급설정 생략
+    # IP는 임시적으로 동적 할당
+}
+
 
 # 6. 탄력적 IP 적용 (1차 버전에서는  제외)

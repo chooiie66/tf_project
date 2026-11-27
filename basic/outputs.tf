@@ -15,5 +15,5 @@ output "default_susbnets_ids" {
 # 3. AMI 아이디 출력
 output "aws_ami_amazon_linux_id" {
     description = "아마존 리눅스의 ami id"
-    value = data.aws_ami.amazon_linux_.id
+    value = data.aws_ami.amazon_linux.id
 }
