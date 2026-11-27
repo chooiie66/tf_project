@@ -17,3 +17,13 @@ output "aws_ami_amazon_linux_id" {
     description = "아마존 리눅스의 ami id"
     value = data.aws_ami.amazon_linux.id
 }
+
+# 4. EIP 출력
+output "public_ip" {
+    value = aws_eip.ai-cp2-07-eip.public_ip
+}
+
+# 5. ec2 instance id 출력
+output "instance" {
+    value = aws_instance.ai-cp2-07-ec2.id
+}
