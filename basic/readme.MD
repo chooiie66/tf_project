@@ -49,3 +49,17 @@ terraform apply
 ```
 terraform destroy
 ```
+
+
+# 목표 인프라 시스템
+```
+Internet
+    |
+Elastic IP         <- 탄력적 IP. 리소스할당 생성.
+    |
+EC2 AmazonLinux2   <- AmazonLinux 사용/ ec2-user
+    |
+security Group     <- 보안그룹, 인바운드(ssh-22), 아웃바운드(전체 개방)
+    |
+VPC(Default)       <- 클라우드 내에 사설 클라우드(네트워크), 기본(default)를 사용,신규생성X
+```
