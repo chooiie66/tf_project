@@ -37,6 +37,11 @@ terraform init
 ```
 terraform validate          # 문법에 대한 유효성 검사를 하기위해 종종 쓸 수 있다.
 ```
+- 옵션 : 형식 맞추기
+``
+terraform fmt
+```
+
 - step3 : 실행 계획 확인 (플래닝, 만들어질 EC2 instance에 대한 시뮬레이션이라고 생각하면 됨)
 ```
 terraform plan
