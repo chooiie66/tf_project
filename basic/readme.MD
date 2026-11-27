@@ -35,7 +35,7 @@ terraform init
 
 - step2 : 문법 검사(체킹)
 ```
-terraform validate
+terraform validate          # 문법에 대한 유효성 검사를 하기위해 종종 쓸 수 있다.
 ```
 - step3 : 실행 계획 확인 (플래닝, 시뮬레이션)
 ```
